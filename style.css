@@ -1,0 +1,248 @@
+/* style.css */
+
+/* General Styles */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0 0 0;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    background-color: #555;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #777;
+    transform: scale(1.05);
+}
+
+/* Main Section */
+main {
+    padding: 2rem;
+    text-align: center;
+    background-color: #2a2a2a;
+}
+
+#welcome {
+    margin-bottom: 2rem;
+}
+
+#welcome h2 {
+    font-size: 2.5rem;
+    color: #ffcc00;
+}
+
+#welcome p {
+    font-size: 1.2rem;
+    color: #ddd;
+}
+
+#gameGallery {
+    margin-top: 2rem;
+}
+
+#gameGallery h2 {
+    font-size: 2rem;
+    color: #ffcc00;
+    margin-bottom: 1rem;
+}
+
+#games {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.game-card {
+    background-color: #333;
+    border: 1px solid #444;
+    border-radius: 8px;
+    margin: 1rem;
+    padding: 1rem;
+    width: 220px;
+    text-align: left;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.game-card:hover {
+    transform: scale(1.05);
+}
+
+.game-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.game-card h3 {
+    font-size: 1.2rem;
+    color: #ffcc00;
+    margin-top: 0.5rem;
+}
+
+.game-card p {
+    color: #ddd;
+}
+
+.game-card a {
+    color: #1e90ff;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.3rem 0.6rem;
+    border: 1px solid #1e90ff;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.game-card a:hover {
+    background-color: #1e90ff;
+    color: #fff;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    width: 100%;
+}
+
+
+
+/* CSS for Like Button */
+.game-card button {
+    background-color: #ffcc00;
+    color: #333;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.game-card button:hover {
+    background-color: #ffdb4d;
+    transform: scale(1.05);
+}
+
+
+
+/* CSS for Like Button */
+.game-card button {
+    background-color: #ffcc00;
+    color: #333;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.game-card button:hover {
+    background-color: #ffdb4d;
+    transform: scale(1.05);
+}
+
+.game-card button:disabled {
+    cursor: not-allowed;
+}
+
+
+
+/* CSS for Like Button */
+.game-card button {
+    background-color: #ffcc00;
+    color: #333;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.game-card button:hover {
+    background-color: #ffdb4d;
+    transform: scale(1.05);
+}
+
+.game-card button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* CSS for Download Link */
+.game-card a {
+    color: #1e90ff;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.3rem 0.6rem;
+    border: 1px solid #1e90ff;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.game-card a:hover {
+    background-color: #1e90ff;
+    color: #fff;
+}
+
+/* Add a little space between elements */
+.game-card a + button {
+    margin-left: 0.5rem; /* Increase margin to add space between the download link and like button */
+}
+
+
+/* CSS for Search Bar */
+header input[type="text"] {
+    width: 50%;
+    padding: 0.5rem;
+    margin: 1rem auto;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    display: block;
+    text-align: center;
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore - Game Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+</head>
+<body>
+    <header>
+        <h1>Explore</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="explore.html">Explore</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                 <li id="uploadOption" style="display: none;"><a href="upload.html">Upload</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="explore">
+            <h2>Explore Games</h2>
+            <div class="game-list" id="exploreGames"></div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Game Hub</p>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>
+
+
+ <style>
+/* Game List and Game Card Styles */
+.game-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.game-card {
+    background-color: #333;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 1rem;
+    width: calc(20% - 1rem); /* 5 items per row */
+    box-sizing: border-box;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.game-card:hover {
+    transform: scale(1.05);
+}
+
+.game-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.game-card h3 {
+    font-size: 1.2rem;
+    color: #ffcc00;
+    margin-top: 0.5rem;
+}
+
+.game-card p {
+    color: #ddd;
+}
+
+.game-card a {
+    color: #1e90ff;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.3rem 0.6rem;
+    border: 1px solid #1e90ff;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.game-card a:hover {
+    background-color: #1e90ff;
+    color: #fff;
+}
+
+
+
+
+
+ </style>
+
+
+ <script>
+ 	document.addEventListener('DOMContentLoaded', function() {
+    const gameGallery = JSON.parse(localStorage.getItem('gameGallery')) || [];
+    
+    function displayGames(games, containerId) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = '';
+        games.forEach(game => {
+            const gameCard = document.createElement('div');
+            gameCard.classList.add('game-card');
+            
+            const thumbnail = document.createElement('img');
+            thumbnail.src = game.thumbnail;
+            gameCard.appendChild(thumbnail);
+            
+            const name = document.createElement('h3');
+            name.textContent = game.name;
+            gameCard.appendChild(name);
+            
+            const link = document.createElement('a');
+            link.href = game.link;
+            link.textContent = 'Download';
+            gameCard.appendChild(link);
+
+            container.appendChild(gameCard);
+        });
+    }
+
+    const exploreGames = gameGallery.slice(0, 15);  // Example: first 15 games for the explore page
+    displayGames(exploreGames, 'exploreGames');
+});
+
+
+ </script>

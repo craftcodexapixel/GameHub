@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Hub</title>
+    <link rel="stylesheet" href="style.css">
+      <link rel="icon" type="image/x-icon" href="favicon.png">
+</head>
+<body>
+    <header>
+        <h1>Game Hub</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="explore.html">Explore</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li id="uploadOption" style="display: none;"><a href="upload.html">Upload</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+        <input type="text" id="searchBar" placeholder="Search games...">
+    </header>
+    <main>
+        <section id="welcome">
+            <h2>Welcome to Game Hub</h2>
+            <p>Your one-stop destination for downloading and uploading games.</p>
+        </section>
+        <section id="gameGallery">
+            <h2>Game Gallery</h2>
+            <div id="games"></div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Game Hub</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const userRole = localStorage.getItem('userRole');
+            if (userRole === 'uploader') {
+                document.getElementById('uploadOption').style.display = 'block';
+            }
+
+            const gameGallery = JSON.parse(localStorage.getItem('gameGallery')) || [];
+            const likedGames = JSON.parse(localStorage.getItem('likedGames')) || [];
+            const gamesContainer = document.getElementById('games');
+            const searchBar = document.getElementById('searchBar');
+            
+            // Function to display games
+            function displayGames(games) {
+                gamesContainer.innerHTML = '';
+                games.forEach((game, index) => {
+                    const gameCard = document.createElement('div');
+                    gameCard.classList.add('game-card');
+                    
+                    const thumbnail = document.createElement('img');
+                    thumbnail.src = game.thumbnail;
+                    gameCard.appendChild(thumbnail);
+                    
+                    const name = document.createElement('h3');
+                    name.textContent = game.name;
+                    gameCard.appendChild(name);
+                    
+                    const size = document.createElement('p');
+                    size.textContent = `Size:  ${game.size}GB`;
+                    gameCard.appendChild(size);
+                    
+                    const processor = document.createElement('p');
+                    processor.textContent = `Processor: ${game.processor}`;
+                    gameCard.appendChild(processor);
+                    
+                    const gpu = document.createElement('p');
+                    gpu.textContent = `GPU: ${game.gpu}`;
+                    gameCard.appendChild(gpu);
+                    
+                    const ram = document.createElement('p');
+                    ram.textContent = `RAM: ${game.ram}GB`;
+                    gameCard.appendChild(ram);
+                    
+                    const storage = document.createElement('p');
+                    storage.textContent = `Storage: ${game.storage}GB`;
+                    gameCard.appendChild(storage);
+                    
+                    const link = document.createElement('a');
+                    link.href = game.link;
+                    link.textContent = 'Download';
+                    gameCard.appendChild(link);
+
+                    // Like Button
+                    const likeButton = document.createElement('button');
+                    const likeCount = game.likes || 0;
+                    likeButton.textContent = `Like (${likeCount})`;
+
+                    // Disable like button if already liked
+                    if (likedGames.includes(index)) {
+                        likeButton.disabled = true;
+                    }
+
+                    // Handle like button click
+                    likeButton.addEventListener('click', function() {
+                        if (!likedGames.includes(index)) {
+                            game.likes = likeCount + 1;
+                            likedGames.push(index);
+                            localStorage.setItem('gameGallery', JSON.stringify(gameGallery));
+                            localStorage.setItem('likedGames', JSON.stringify(likedGames));
+                            likeButton.textContent = `Like (${game.likes})`;
+                            likeButton.disabled = true;
+                        }
+                    });
+
+                    gameCard.appendChild(likeButton);
+                    gamesContainer.appendChild(gameCard);
+                });
+            }
+
+            // Initial display of games
+            displayGames(gameGallery);
+
+            // Search functionality
+            searchBar.addEventListener('input', function() {
+                const searchQuery = searchBar.value.toLowerCase();
+                const filteredGames = gameGallery.filter(game => game.name.toLowerCase().includes(searchQuery));
+                displayGames(filteredGames);
+            });
+        });
+
+
+    </script>
+    <script src="scripts.js"></script>
+</body>
+</html>
